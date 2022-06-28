@@ -1,0 +1,1753 @@
+<?php
+
+/*
+ * Script:      footer.html
+ * Modified:    03-18-2022
+ * Frontend:    HTML5 & CSS3
+ * Backend:     PHP 7
+ * Database:    MariaDB 10
+ * Author:      Doofus Corporation
+ * Copyright:   Doofus Corporation
+ * Email:       webmaster@doofus.xyz
+ * URL:         https://www.doofus.xyz
+*/
+
+/* This script:
+ - is the HTML footer for the application.
+ - shows the copyright.
+ - shows the footer navigation.
+ - contains the modals.
+ - ends the HTML template.
+ - flush the buffered output.
+*/
+
+?>
+
+                        <!-- Footer -->
+                        <footer id="footer" class="footer">
+                            <div class="footer-top py-5">
+                                <div class="container">
+                                    <div class="row cols-xs-space cols-sm-space cols-md-space">
+                                        <div class="col-lg-6">
+                                            <div class="col">
+                                                <img src="assets/images/logos/logo2.svg" height="25" class="" alt="Roguehog Logo">
+
+                                                <span class="clearfix"></span>
+
+                                                <span class="heading heading-sm c-gray-light strong-700"><?php echo $words['words30'] ?></span>
+
+                                                <div class="copyright mt-4">
+                                                    <p>
+                                                        &copy; Roguehog LLC, <?php echo $words['words31'] ?>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2">
+                                            <div class="col">
+                                                <h4 class="heading heading-xs strong-600 text-uppercase mb-1">
+                                                    <?php echo $words['words32'] ?>
+                                                </h4>
+                                                <ul class="footer-links">
+                                                    <li><a href="" data-toggle="modal" data-target="#aboutModal"><?php echo $words['words33'] ?></a></li>
+                                                    <li><a href="" data-toggle="modal" data-target="#faqModal"><?php echo $words['words34'] ?></a></li>
+                                                    <!--<li><a href="" data-toggle="modal" data-target="#supportModal"><?php echo $words['words35'] ?></a></li>-->
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2">
+                                            <div class="col">
+                                                <h4 class="heading heading-xs strong-600 text-uppercase mb-1">
+                                                    <?php echo $words['words36'] ?>
+                                                </h4>
+                                                <ul class="footer-links">
+                                                    <!--<li><a href="" data-toggle="modal" data-target="#cookiesModal"><?php echo $words['words37'] ?></a></li>-->
+                                                    <li><a href="" data-toggle="modal" data-target="#privacyModal"><?php echo $words['words38'] ?></a></li>
+                                                    <li><a href="" data-toggle="modal" data-target="#termsModal"><?php echo $words['words39'] ?></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2">
+                                            <div class="col">
+                                                <h4 class="heading heading-xs strong-600 text-uppercase mb-1">
+                                                    <?php echo $words['words40'] ?>
+                                                </h4>
+
+                                                <ul class="footer-links">
+                                                    <?php echo '<li class="nav-item dropdown">
+                                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>' . $words['words41'] . '</span></a>
+                                                        <div class="dropdown-menu dropdown-menu-x2 py-0 px-0 overflow--hidden" aria-labelledby="dropdown">
+                                                            <div class="list-group rounded">';
+                                                                // Retrieve languages from database:
+                                                                $q = "SELECT lang_id, lang FROM languages WHERE status='Active' ORDER BY lang ASC";
+                                                                $r = mysqli_query($dbc, $q);
+                                                                if (mysqli_num_rows($r) > 0) {
+                                                                    while ($menu_row = mysqli_fetch_array($r, MYSQLI_NUM)) {
+                                                                        echo '<a class="list-group-item list-group-item-action d-flex align-items-center" href="?lid=' . $menu_row[0] . '"><p class="text-md mb-0">' . $menu_row[1] . '</p></a>';
+                                                                    }
+                                                                }
+                                                                mysqli_free_result($r);
+                                                            echo'</div>
+                                                        </div>
+                                                    </li>'; ?>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </footer><!-- /.footer -->
+                    </div><!-- /.st-content-inner -->
+                </div><!-- /.st-content -->
+            </div><!-- /.st-pusher -->
+        </div><!-- /.st-container -->
+    </div><!-- /.main wrapper -->
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top btn-back-to-top" title="<?php echo $words['words42'] ?>"></a>
+
+    <!-- SCRIPTS -->
+    <!-- Core -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/popper/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/slidebar/slidebar.js"></script>
+    <script src="assets/js/classie.js"></script>
+
+    <!-- Bootstrap Extensions -->
+    <script src="assets/vendor/bootstrap-notify/bootstrap-growl.min.js"></script>
+    <script src="assets/vendor/scrollpos-styler/scrollpos-styler.js"></script>
+
+    <!-- Plugins: Sorted A-Z -->
+    <script src="assets/vendor/adaptive-backgrounds/adaptive-backgrounds.js"></script>
+    <script src="assets/vendor/countdown/js/jquery.countdown.min.js"></script>
+    <script src="assets/vendor/dropzone/dropzone.min.js"></script>
+    <script src="assets/vendor/easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script src="assets/vendor/fancybox/js/jquery.fancybox.min.js"></script>
+    <script src="assets/vendor/flatpickr/flatpickr.min.js"></script>
+    <script src="assets/vendor/flip/flip.min.js"></script>
+    <script src="assets/vendor/footer-reveal/footer-reveal.min.js"></script>
+    <script src="assets/vendor/gradientify/jquery.gradientify.min.js"></script>
+    <script src="assets/vendor/headroom/headroom.min.js"></script>
+    <script src="assets/vendor/headroom/jquery.headroom.min.js"></script>
+    <script src="assets/vendor/input-mask/input-mask.min.js"></script>
+    <script src="assets/vendor/instafeed/instafeed.js"></script>
+    <script src="assets/vendor/milestone-counter/jquery.countTo.js"></script>
+    <script src="assets/vendor/nouislider/js/nouislider.min.js"></script>
+    <script src="assets/vendor/paraxify/paraxify.min.js"></script>
+    <script src="assets/vendor/select2/js/select2.min.js"></script>
+    <script src="assets/vendor/sticky-kit/sticky-kit.min.js"></script>
+    <script src="assets/vendor/swiper/js/swiper.min.js"></script>
+    <script src="assets/vendor/textarea-autosize/autosize.min.js"></script>
+    <script src="assets/vendor/typeahead/typeahead.bundle.min.js"></script>
+    <script src="assets/vendor/typed/typed.min.js"></script>
+    <script src="assets/vendor/vide/vide.min.js"></script>
+    <script src="assets/vendor/viewport-checker/viewportchecker.min.js"></script>
+    <script src="assets/vendor/wow/wow.min.js"></script>
+
+    <!-- Isotope -->
+    <script src="assets/vendor/isotope/isotope.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+
+    <!-- App JS -->
+    <script src="assets/js/boomerang.min.js"></script>
+
+</body><!-- /.body -->
+</html>
+
+<?php
+
+// Flush the buffered output:
+ob_end_flush();
+
+?>
+
+<!-- MODALS -->
+<!-- Video Modal -->
+<div class="modal fade" id="videoModal" data-backdrop="static" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <a href="" class="close" data-dismiss="modal" aria-label="Close"><i class="fa-solid fa-rectangle-xmark" title="Close"></i></a>
+                <video id="video-1" width="750" height="500" controls poster="assets/images/other/img-2.png">
+                    <source src="assets/media/video/video-1.mp4" type="video/mp4">
+                        Your browser does not support the MP4 video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#videoModal').on('hidden.bs.modal', () => {
+        $('#video-1').attr('src', '#video-1');
+    });
+    /* set the width of message area ans set footer to bottom */
+    $('.alert-msg-div').height(window.innerHeight-($('.footer').height()+$('.header').height()));
+
+    flatpickr("#input");
+
+
+flatpickr(".anotherSelector");
+</script><!-- /.video modal -->
+
+<!-- About Modal -->
+<div class="modal fade" id="aboutModal" data-backdrop="static" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h3 class="section-title-inner heading-2 strong-500 text-normal">About Roguehog<span style="color: #ef0000;">.</span></h3>
+                <a href="" class="close" data-dismiss="modal" aria-label="Close"><i class="fa-solid fa-rectangle-xmark" title="Close"></i></a>
+            </div>
+            <div class="modal-body">
+                <p class="mb-4">
+                    Roguehog was inspired by witnessing endless incidents of dangerous driving as well as the accompanying stress and feeling of helplessness and frustration as the offenders sped away… the widespread adoption of dashcams presented a game changing opportunity to have eyes everywhere!
+                </p>
+                <p class="mb-4">
+                    We crowdsource actual dashcam footage of traffic incidents and violations to provide auto insurers and other organizations with real world data reports on the driving behavior of their clients – and reward dashcam users for their uploads. A win-win situation.
+                </p>
+                <p class="mb-4">
+                    Further bonuses include the prospect of safer roads – drivers thinking twice before acting recklessly, knowing one their fellow road users could record and report them – and cheaper and fairer insurance, through more accurate risk assessments and fewer accidents.
+                </p>
+                <p class="mb-4">
+                    Motor vehicle crashes cost the US nearly $1 trillion per year. And the effects are pervasive with 28 percent property damage, 25 percent workplace productivity loss, 8 percent household productivity loss, 39 percent medical costs, traffic congestion, and other costs.
+                </p>
+                <p class="mb-4">
+                    Roguehog – with your participation – can play an important role in changing the landscape of our roads. Join us!
+                </p>
+            </div>
+        </div>
+    </div>
+</div><!-- /.about modal -->
+
+<!-- FAQ Modal -->
+<div class="modal fade" id="faqModal" data-backdrop="static" tabindex="-1" aria-labelledby="faqModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h3 class="section-title-inner heading-2 strong-500 text-normal">Frequently asked questions<span style="color: #ef0000;">.</span></h3>
+                <a href="" class="close" data-dismiss="modal" aria-label="Close"><i class="fa-solid fa-rectangle-xmark" title="Close"></i></a>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <h3 class="heading heading-3 strong-500 text-normal">
+                            General
+                        </h3>
+
+                        <div id="accordionOne" class="accordion accordion--style-3 accordion-cards--stacked" role="tablist" aria-multiselectable="true">
+                            <div class="card">
+                                <div class="card-header" role="tab" id="accordionOneHeading-1">
+                                    <p class="mb-4">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#accordionOneCollapse-1" aria-controls="accordionOneCollapse-1">
+                                            Where does Roguehog operate?
+                                        </a>
+                                    </p>
+                                </div>
+
+                                <div id="accordionOneCollapse-1" class="collapse" role="tabpanel" aria-labelledby="accordionOneHeading-1">
+                                    <div class="card-block">
+                                        <p class="mb-4">
+                                            We currently operate only in the United States.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" role="tab" id="accordionOneHeading-2">
+                                    <p class="mb-4">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#accordionOneCollapse-2" aria-controls="accordionOneCollapse-2">
+                                            Is the personal information I provide secure?
+                                        </a>
+                                    </p>
+                                </div>
+                                <div id="accordionOneCollapse-2" class="collapse" role="tabpanel" aria-labelledby="accordionOneHeading-2">
+                                    <div class="card-block">
+                                        <p class="mb-4">
+                                            Yes, Roguehog does not sell personal data.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" role="tab" id="accordionOneHeading-3">
+                                    <p class="mb-4">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#accordionOneCollapse-3" aria-controls="accordionOneCollapse-3">
+                                            Is it legal to collect and sell data and video footage which feature personal license plate numbers?
+                                        </a>
+                                    </p>
+                                </div>
+                                <div id="accordionOneCollapse-3" class="collapse" role="tabpanel" aria-labelledby="accordionOneHeading-3">
+                                    <div class="card-block">
+                                        <p class="mb-4">
+                                            Yes, it is legal in the United States to collect and sell information on traffic violations and accidents.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" role="tab" id="accordionOneHeading-4">
+                                    <p class="mb-4">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#accordionOneCollapse-4" aria-controls="accordionOneCollapse-4">
+                                            How does Roguehog generate revenue?
+                                        </a>
+                                    </p>
+                                </div>
+                                <div id="accordionOneCollapse-4" class="collapse" role="tabpanel" aria-labelledby="accordionOneHeading-4">
+                                    <div class="card-block">
+                                        <p class="mb-4">
+                                            We sell video reports to our customers.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--<div class="card">
+                                <div class="card-header" role="tab" id="accordionOneHeading-5">
+                                    <p class="mb-4">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#accordionOneCollapse-5" aria-controls="accordionOneCollapse-5">
+                                            Question 5
+                                        </a>
+                                    </p>
+                                </div>
+                                <div id="accordionOneCollapse-5" class="collapse" role="tabpanel" aria-labelledby="accordionOneHeading-5">
+                                    <div class="card-block">
+                                        <p class="mb-4">
+                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+
+                        <span class="space-xs-md"></span>
+
+                        <h3 class="heading heading-3 strong-500 text-normal">
+                            Uploaders
+                        </h3>
+
+                        <div id="accordionOne" class="accordion accordion--style-3 accordion-cards--stacked" role="tablist" aria-multiselectable="true">
+                            <div class="card">
+                                <div class="card-header" role="tab" id="accordionOneHeading-6">
+                                    <p class="mb-4">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#accordionOneCollapse-6" aria-controls="accordionOneCollapse-6">
+                                            What information needs to be included with video uploads?
+                                        </a>
+                                    </p>
+                                </div>
+                                <div id="accordionOneCollapse-6" class="collapse" role="tabpanel" aria-labelledby="accordionOneHeading-6">
+                                    <div class="card-block">
+                                        <p class="mb-4">
+                                            We require a license plate, date and approximate time of the traffic violation, state, GPS coordinates, violation, description of violation, and clear video evidence.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" role="tab" id="accordionOneHeading-7">
+                                    <p class="mb-4">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#accordionOneCollapse-7" aria-controls="accordionOneCollapse-7">
+                                            What video format is required for uploading?
+                                        </a>
+                                    </p>
+                                </div>
+                                <div id="accordionOneCollapse-7" class="collapse" role="tabpanel" aria-labelledby="accordionOneHeading-7">
+                                    <div class="card-block">
+                                        <p class="mb-4">
+                                            We accept all video formats. Uploaded videos are then converted to mp4 format. 
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" role="tab" id="accordionOneHeading-8">
+                                    <p class="mb-4">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#accordionOneCollapse-8" aria-controls="accordionOneCollapse-8">
+                                            What is the maximum video file size allowed?
+                                        </a>
+                                    </p>
+                                </div>
+                                <div id="accordionOneCollapse-8" class="collapse" role="tabpanel" aria-labelledby="accordionOneHeading-8">
+                                    <div class="card-block">
+                                        <p class="mb-4">
+                                            We allow a maximum file size of 20MB, or 30 seconds of footage, to be uploaded.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" role="tab" id="accordionOneHeading-9">
+                                    <p class="mb-4">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#accordionOneCollapse-9" aria-controls="accordionOneCollapse-9">
+                                            Can I only use a dashcam to record video?
+                                        </a>
+                                    </p>
+                                </div>
+                                <div id="accordionOneCollapse-9" class="collapse" role="tabpanel" aria-labelledby="accordionOneHeading-9">
+                                    <div class="card-block">
+                                        <p class="mb-4">
+                                            We require high-quality video footage, so a dashcam is preferable.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" role="tab" id="accordionOneHeading-10">
+                                    <p class="mb-4">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#accordionOneCollapse-10" aria-controls="accordionOneCollapse-10">
+                                            How much will I get paid for each report?
+                                        </a>
+                                    </p>
+                                </div>
+                                <div id="accordionOneCollapse-10" class="collapse" role="tabpanel" aria-labelledby="accordionOneHeading-10">
+                                    <div class="card-block">
+                                        <p class="mb-4">
+                                            Video uploaders receive 40 percent of the revenue ($15) each time a report is sold.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" role="tab" id="accordionOneHeading-11">
+                                    <p class="mb-4">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#accordionOneCollapse-11" aria-controls="accordionOneCollapse-11">
+                                            How long will my report data and dashcam footage be stored on your system?
+                                        </a>
+                                    </p>
+                                </div>
+                                <div id="accordionOneCollapse-11" class="collapse" role="tabpanel" aria-labelledby="accordionOneHeading-11">
+                                    <div class="card-block">
+                                        <p class="mb-4">
+                                            Roguehog will store the uploaded data indefinitely.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" role="tab" id="accordionOneHeading-12">
+                                    <p class="mb-4">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#accordionOneCollapse-12" aria-controls="accordionOneCollapse-12">
+                                            Do I get paid for every video I upload?
+                                        </a>
+                                    </p>
+                                </div>
+                                <div id="accordionOneCollapse-12" class="collapse" role="tabpanel" aria-labelledby="accordionOneHeading-12">
+                                    <div class="card-block">
+                                        <p class="mb-4">
+                                            No, payments are made to uploaders only when video reports get purchased by users.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="space-xs-md"></span>
+
+                        <h3 class="heading heading-3 strong-500 text-normal">
+                            Customers
+                        </h3>
+
+                        <div id="accordionOne" class="accordion accordion--style-3 accordion-cards--stacked" role="tablist" aria-multiselectable="true">
+                            <div class="card">
+                                <div class="card-header" role="tab" id="accordionOneHeading-13">
+                                    <p class="mb-4">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#accordionOneCollapse-13" aria-controls="accordionOneCollapse-13">
+                                            How much does Roguehog charge for the purchase of each video report?
+                                        </a>
+                                    </p>
+                                </div>
+                                <div id="accordionOneCollapse-13" class="collapse" role="tabpanel" aria-labelledby="accordionOneHeading-13">
+                                    <div class="card-block">
+                                        <p class="mb-4">
+                                            We charge $25 per report.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" role="tab" id="accordionOneHeading-14">
+                                    <p class="mb-4">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#accordionOneCollapse-14" aria-controls="accordionOneCollapse-14">
+                                            How are payments for video reports made?
+                                        </a>
+                                    </p>
+                                </div>
+                                <div id="accordionOneCollapse-14" class="collapse" role="tabpanel" aria-labelledby="accordionOneHeading-14">
+                                    <div class="card-block">
+                                        <p class="mb-4">
+                                            We use Stripe as payment processor. 
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" role="tab" id="accordionOneHeading-15">
+                                    <p class="mb-4">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#accordionOneCollapse-15" aria-controls="accordionOneCollapse-15">
+                                            How do I find traffic violation reports on Roguehog?
+                                        </a>
+                                    </p>
+                                </div>
+                                <div id="accordionOneCollapse-15" class="collapse" role="tabpanel" aria-labelledby="accordionOneHeading-15">
+                                    <div class="card-block">
+                                        <p class="mb-4">
+                                            You can either search our database through the Roguehog app, or upload license plate numbers in question and then get notified automatically by email when a match is found in our database.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--<div class="card">
+                                <div class="card-header" role="tab" id="accordionOneHeading-16">
+                                    <p class="mb-4">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#accordionOneCollapse-16" aria-controls="accordionOneCollapse-16">
+                                            Question 16
+                                        </a>
+                                    </p>
+                                </div>
+                                <div id="accordionOneCollapse-16" class="collapse" role="tabpanel" aria-labelledby="accordionOneHeading-16">
+                                    <div class="card-block">
+                                        <p class="mb-4">
+                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" role="tab" id="accordionOneHeading-17">
+                                    <p class="mb-4">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#accordionOneCollapse-17" aria-controls="accordionOneCollapse-17">
+                                            Question 17
+                                        </a>
+                                    </p>
+                                </div>
+                                <div id="accordionOneCollapse-17" class="collapse" role="tabpanel" aria-labelledby="accordionOneHeading-17">
+                                    <div class="card-block">
+                                        <p class="mb-4">
+                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- /.faq modal -->
+
+<!-- Support Modal -->
+<!--<div class="modal fade" id="supportModal" data-backdrop="static" tabindex="-1" aria-labelledby="supportModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h3 class="section-title-inner heading-2 strong-500 text-normal">Support<span style="color: #ef0000;">.</span></h3>
+                <a href="" class="close" data-dismiss="modal" aria-label="Close"><i class="fa-solid fa-rectangle-xmark" title="Close"></i></a>
+            </div>
+            <div class="modal-body">
+                <div class="justify-content-center">
+                    <p class="mb-4 text-center">
+                        Please use this form to contact our support desk for questions or technical issues.
+                    </p>-->
+                    <!-- Support Form -->
+                    <!--form id="form_support" data-action="#" class="form-default" role="form">
+                        <div class="form-group has-feedback">
+                            <input type="text" name="name" class="form-control form-control-lg mt-1" placeholder="First and last names" maxlength="75" required>
+                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+                        <div class="form-group has-feedback">
+                            <input type="email" name="email" class="form-control form-control-lg mt-3" placeholder="Email address" maxlength="75" required>
+                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+                        <div class="form-group has-feedback">
+                            <select class="form-control form-control-lg form-select mt-3" required>
+                                <option value="">Support type</option>
+                                <option value="">General</option>
+                                <option value="">Uploader</option>
+                                <option value="">Customer</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group has-feedback">
+                            <textarea name="message" class="form-control no-resize mt-3" rows="5" placeholder="Message" maxlength="500" required></textarea>
+                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+                        <div class="">-->
+                            <!--<div class="g-recaptcha mt-3" data-sitekey="6Lfs5ScUAAAAANAJwGrdfvWLFRRiVbKRE2vfoaFj"></div>
+                            <button type="reset" class="btn-reset d-none"></button>-->
+                            <!--<button type="submit" class="btn btn-block btn-styled btn-base-2 mt-3">Send message</button>
+                        </div>
+                    </form>--><!-- /.support form -->
+                <!--</div>
+            </div>
+        </div>
+    </div>
+</div>--><!-- /.suppport modal -->
+
+<!-- Privacy Modal -->
+<div class="modal fade" id="privacyModal" data-backdrop="static" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h3 class="section-title-inner heading-2 strong-500 text-normal">Privacy policy<span style="color: #ef0000;">.</span></h3>
+                <a href="" class="close" data-dismiss="modal" aria-label="Close"><i class="fa-solid fa-rectangle-xmark" title="Close"></i></a>
+            </div>
+            <div class="modal-body">
+                <h3 class="heading heading-4 strong-500 text-normal">Roguehog LLC privacy policy</h3>
+                <p class="mb-2">
+                    (Effective as of March 21, 2022)
+                </p>
+                <p class="mb-2">
+                    Roguehog LLC (the “Company”) is committed to maintaining robust privacy protections for its users. Our Privacy Policy (“Privacy Policy”) is designed to help you understand how we collect, use, and safeguard the information you provide to us and to assist you in making informed decisions when using our Service.
+                </p>
+                <p class="mb-2">
+                    For purposes of this Agreement, “Site” refers to the Company’s website, which can be accessed at https://roguehog.com. “Service” or “Services” refers to the Company’s services accessed via the Site, in which users can upload, search, buy, download, and get paid for content. The terms “we,” “us,” and “our” refer to the Company. “You” refers to you, as a user of our Site or our Service.
+                </p>
+                <p class="mb-2">
+                    By accessing our Site or our Service, you accept our Privacy Policy and Terms of Use (link found in the footer section of our website at https://roguehog.com), and you consent to our collection, storage, use and disclosure of your Personal Information as described in this Privacy Policy.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Information we collect</h3>
+                <p class="mb-2">
+                    We collect “Non-Personal Information” and “Personal Information.” Non-Personal Information includes information that cannot be used to personally identify you, such as anonymous usage data, general demographic information we may collect, referring or exit pages and URLs, platform types, preferences you submit and preferences that are generated based on the data you submit and number of clicks. Personal Information includes your first name, last name, business name (when applicable), email address, and other contact information, which you submit to us through the registration process at the Site.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-italic">Information collected via technology</h3>
+                <p class="mb-2">
+                    To activate the Service, you do need to submit your first name, last name, business name (when applicable) and email address. However, in an effort to improve the quality of the Service, we track information provided to us by your browser or by our software application when you view or use the Service, such as the website you came from (known as the “referring URL”), the type of browser you use, the device from which you connected to the Service, the time and date of access, and other information that does not personally identify you. We track this information using cookies, or small text files which include an anonymous unique identifier. Cookies are sent to a user’s browser from our servers and are stored on the user’s computer hard drive. Sending a cookie to a user’s browser enables us to collect Non-Personal Information about that user and keep a record of the user’s preferences when utilizing our Services, both on an individual and aggregate basis. For example, the Company may use cookies to collect the following information:</p>
+                <ul>
+                    <li>
+                        <p class="mb-2">
+                            identifiers and device information: We may automatically collect your Internet Protocol (“IP”) address when you visit our Site, and other information about your device including unique identifiers such as MAC address or information from the computer, mobile device, table or other device you use to access the Site, including, but not limited to, your device type, operation system and version, browser type and language, settings and configuration and information about the location of your device;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            geographical data: We collection certain geographic data when you use the Site. For mobile applications, this may include precise location data as provided by your mobile device with your consent; and
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            usage information: We may collect information about your usage of and activity on our Site, including the date and time you visit the Site, the areas or pages of the Site that you visit, the amount of time you spend viewing or using the Site, the number of times you return to the Site, items that are added to or remain in your virtual cart on the Site, other click-stream or site usage data, emails that you open, forward or click-through to our Site, and other sites that you my visit.
+                        </p>
+                    </li>
+                </ul>
+                <p class="mb-2">
+                    A cookie is a small amount of data that is sent to your browser from a website and stores on your computer’s hard drive. The Company may use both persistent and session cookies; persistent cookies remain on your computer after you close your session and until you delete them, while session cookies expire when you close your browser. For example, we store a persistent cookie to track your language preference. Cookies can be used to provide you with a tailored user experience and to make it easier for you to use a website upon a future visit. We may use cookies to recognize you when you return to access or use our Site or Services.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-italic">Information you provide us</h3>
+                <p class="mb-2">
+                    In addition to the information provided automatically by your browser when you visit our Site, we collect information you directly provide to us through our Site and through your interactions with us. This may include when you use our Site, register or create an online account with or through the Site, purchase products, request information from us, sign up for newsletters or our emails, use our Services sign up for promotions, complete a survey, request customer support, or otherwise communicate with or contact us.
+                </p>
+                <p class="mb-2">
+                    The information we collect from you generally falls into the following categories:
+                </p>
+                <ul>
+                    <li>
+                        <p class="mb-2">
+                            Contact details: We collection your contact information, such as name, email address or other similar identifiers.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Transaction details: We collect details about your purchases or other transactions with us, including, but not limited to, your transaction or purchase history or transaction channel.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Account information: You may choose to register for an account for the Services. We collect information from you regarding your account registration, such as your name, email address and password.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Marketing and communications data: We collect data concerning your preferences in receiving marketing or other targeted information from us and your contact preferences.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Demographic data: When you create an online account for the Services or complete surveys, we may request that you provide us with your date of birth, gender, and other demographic details, including information about your preferences.
+                        </p>
+                    </li>
+                </ul>
+                <h3 class="heading heading-4 strong-500 text-italic">Information related to user content</h3>
+                <p class="mb-2">
+                    You may use the Services to voluntarily upload video footage and related data on vehicular traffic violation or accident (“User Content”) to the Site. You are solely responsible for the User Content that you upload or otherwise make available via the Site and the Services. Your User Content will include license plate numbers and other Personal and Non-Personal Information of third parties involved in the traffic violation or accident. The User Content is not subject to this Privacy Policy since it does not pertain to information about you. You understand that we and other users will have access to all information provided in User Content uploaded by you and that all User Content is subject to sale to third parties.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-italic">Children’s privacy</h3>
+                <p class="mb-2">
+                    The Site and the Service are not directed to anyone under the age of 16. The Site does not knowingly collect or solicit information from anyone under the age of 16 or allow anyone under the age of 16 to sign up for the Service. In the event that we learn that we have gathered Personal Information from anyone under the age of 16 without the consent of a parent or guardian, we will delete that information as soon as possible. If you believe we have collected such information, please contact us at legal@roguehog.com.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">How we use and share information</h3>
+                <h3 class="heading heading-4 strong-500 text-italic">Personal Information</h3>
+                <p class="mb-2">
+                    Except as otherwise stated in this Privacy Policy, we do not sell, trade, rent or otherwise share for marketing purposes your Personal Information with third parties without your consent. We do share Personal Information with vendors who are performing services for the Company, such as the servers for our email communications who are provided access to user’s email address for purposes of sending emails from us. Those vendors use your Personal Information only at our direction and in accordance with our Privacy Policy.
+                </p>
+                <p class="mb-2">
+                    In general, the Personal Information you provide to us is used to help us communicate with you. For example, we use Personal Information to contact users in response to questions, solicit feedback from users, provide technical support, and inform users about promotional offers.
+                </p>
+                <p class="mb-2">
+                    We may share Personal Information with outside parties if we have a good-faith belief that access, use, preservation or disclosure of the information is reasonably necessary to meet any applicable legal process or enforceable governmental request; to enforce applicable Terms of Service, including investigation of potential violations; address fraud, security or technical concerns; or to protect against harm to the rights, property, or safety of our users or the public as required or permitted by law.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-italic">Non-Personal Information</h3>
+                <p class="mb-2">
+                    In general, we use Non-Personal Information to help us improve the Service and customize the user experience. We also aggregate Non-Personal Information in order to track trends and analyze use patterns on the Site. This Privacy Policy does not limit in any way our use or disclosure of Non-Personal Information and we reserve the right to use and disclose such Non-Personal Information to our partners, advertisers and other third parties at our discretion.
+                </p>
+                <p class="mb-2">
+                    In the event we undergo a business transaction such as a merger, acquisition by another company, or sale of all or a portion of our assets, your Personal Information may be among the assets transferred. You acknowledge and consent that such transfers may occur and are permitted by this Privacy Policy, and that any acquirer of our assets may continue to process your Personal Information as set forth in this Privacy Policy. If our information practices change at any time in the future, we will post the policy changes to the Site so that you may opt out of the new information practices. We suggest that you check the Site periodically if you are concerned about how your information is used.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">How we protect information</h3>
+                <p class="mb-2">
+                    We implement security measures designed to protect your information from unauthorized access. Your account is protected by your account password, and we urge you to take steps to keep your Personal Information safe by not disclosing your password and by signing out of your account after each use. We further protect your information from potential security breaches by implementing certain technological security measures including encryption, firewalls, and secure socket layer technology. However, these measures do not a guarantee that your information will not be accessed, disclosed, altered, or destroyed by breach of such firewalls and secure server software. By using our Service, you acknowledge that you understand and agree to assume these risks.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Your rights regarding the use of your Personal Information</h3>
+                <p class="mb-2">
+                    You have the right at any time to prevent us from contacting you for marketing purposes. When we send a promotional communication to a user, the user can opt out of further promotional communications by following the unsubscribe instructions provided in each promotional email. You can also indicate that you do not wish to receive marketing communications from us in the “Settings” section of your profile page. Please note that notwithstanding the promotional preferences you indicate by either unsubscribing or opting out in your profile page of the Site, we may continue to send you administrative emails including, for example, periodic updates to our Privacy Policy and Terms of Use.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Links to other websites</h3>
+                <p class="mb-2">
+                    As part of the Service, we may provide links to or compatibility with other websites or applications. However, we are not responsible for the privacy practices employed by those websites or the information or content they contain. This Privacy Policy applies solely to information collected by us through the Site and the Service. Therefore, this Privacy Policy does not apply to your use of a third-party website accessed by selecting a link on our Site or via our Service. To the extent that you access or use the Service through or on another website or application, then the privacy policy of that other website or application will apply to your access or use of that site or application. We encourage our users to read the privacy statements of other websites before proceeding to use them.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">California residents</h3>
+                <p class="mb-2">
+                    If you are a resident of California, please review the below Addendum for California residents for additional privacy terms.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Changes to our Privacy Policy</h3>
+                <p class="mb-2">
+                    The Company reserves the right to change this Privacy Policy and our Terms of Use at any time. We will notify you of significant changes to our Privacy Policy by sending a notice to the primary email address specified in your account or by placing a prominent notice on our Site. Significant changes will go into effect 30 days following such notification. Non-material changes or clarifications will take effect immediately. You should periodically check our Site and this privacy page for updates.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Contact us</h3>
+                <p class="mb-2">
+                    If you have any questions regarding this Privacy Policy or the practices of this Site, please contact us by sending an email to legal@roguehog.com.
+                </p>
+                <p class="mb-2">
+                    This Privacy Policy was last updated on March 21, 2022.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Addendum for California residents</h3>
+                <p class="mb-2">
+                    We adopt this Addendum to comply with the California Consumer Privacy Act of 2018 (“CCPA”) and any terms defined in the CCPA have the same meaning when used in this Policy.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Information we collect</h3>
+                <p class="mb-2">
+                    We collect information that identifies, relates to, describes, references, is reasonably capable of being associated with, or could reasonably be linked, directly or indirectly, with a particular consumer, household, or device ("Personal Information"). Personal Information does not include:
+                </p>
+                <ul>
+                    <li>
+                        <p class="mb-2">
+                            Publicly available information from government records.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Deidentified or aggregated consumer information.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Information excluded from the CCPA's scope, like:
+                        </p>
+                    </li>
+                        <ul>
+                            <li>
+                                <p class="mb-2">
+                                    1996 (HIPAA) and the California Confidentiality of Medical Information Act (CMIA), clinical trial data, or other qualifying research data; and
+                                </p>
+                            </li>
+                            <li>
+                                <p class="mb-2">
+                                    personal information covered by certain sector-specific privacy laws, including the Fair Credit Reporting Act (FCRA), the Gramm-Leach-Bliley Act (GLBA) or California Financial Information Privacy Act (FIPA), and the Driver's Privacy Protection Act of 1994.
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="mb-2">
+                    In particular, we have collected the following categories of personal information from consumers within the last 12 months:                    
+                </p>
+
+                <table class="table table-bordered-bottom">
+                    <thead>
+                        <tr>
+                            <th class="align-top">
+                                <p class="mb-2">
+                                    Category
+                                </p>
+                            </th>
+                            <th>
+                                <p class="mb-2">
+                                    Examples
+                                </p>
+                            </th>
+                            <th>
+                                <p class="mb-2 text-center">
+                                    Collected
+                                </p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    A. Identifiers.
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    A real name, alias, postal address, unique personal identifier, online identifier, Internet Protocol address, email address, account name, Social Security number, driver's license number, passport number, or other similar identifiers.
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2 text-center">
+                                    Yes
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    B. Personal information categories listed in the California Customer Records statute (Cal. Civ. Code § 1798.80(e)).
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    A name, signature, Social Security number, physical characteristics or description, address, telephone number, passport number, driver's license or state identification card number, insurance policy number, education, employment, employment history, bank account number, credit card number, debit card number, or any other financial information, medical information, or health insurance information.
+                                </p>
+                                <p class="mb-2">
+                                    Some personal information included in this category may overlap with other categories.
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2 text-center">
+                                    No
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    C. Protected classification characteristics under California or federal law.
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    Age (40 years or older), race, color, ancestry, national origin, citizenship, religion or creed, marital status, medical condition, physical or mental disability, sex (including gender, gender identity, gender expression, pregnancy or childbirth and related medical conditions), sexual orientation, veteran or military status, genetic information (including familial genetic information).
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2 text-center">
+                                    No
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    D. Commercial information.
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    Records of personal property, products or services purchased, obtained, or considered, or other purchasing or consuming histories or tendencies.
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2 text-center">
+                                    No
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    E. Biometric information.
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    Genetic, physiological, behavioral, and biological characteristics, or activity patterns used to extract a template or other identifier or identifying information, such as, fingerprints, faceprints, and voiceprints, iris or retina scans, keystroke, gait, or other physical patterns, and sleep, health, or exercise data.
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2 text-center">
+                                    No
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    F. Internet or other similar network activity.
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    Browsing history, search history, information on a consumer's interaction with a website, application, or advertisement.
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2 text-center">
+                                    Yes
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    G. Geolocation data.
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    Physical location or movements. 
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2 text-center">
+                                    No
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    H. Sensory data.
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    Audio, electronic, visual, thermal, olfactory, or similar information.
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2 text-center">
+                                    No
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    I. Professional or employment-related information.
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    Current or past job history or performance evaluations.
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2 text-center">
+                                    No
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    J. Non-public education information (per the Family Educational Rights and Privacy Act (20 U.S.C. Section 1232g, 34 C.F.R. Part 99)).
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    Education records directly related to a student maintained by an educational institution or party acting on its behalf, such as grades, transcripts, class lists, student schedules, student identification codes, student financial information, or student disciplinary records.
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2 text-center">
+                                    No
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    K. Inferences drawn from other personal information.
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2">
+                                    Profile reflecting a person's preferences, characteristics, psychological trends, predispositions, behavior, attitudes, intelligence, abilities, and aptitudes.
+                                </p>
+                            </td>
+                            <td class="align-top">
+                                <p class="mb-2 text-center">
+                                    No
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p class="mb-2">
+                    We obtain the categories of personal information listed above from the following categories of sources:
+                </p>
+                <ul>
+                    <li>
+                        <p class="mb-2">
+                            Directly from you. For example, from forms you complete or products and services you purchase.
+                        </p>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <p class="mb-2">
+                            Indirectly from you. For example, from observing your actions on our website.
+                        </p>
+                    </li>
+                </ul>
+                <h3 class="heading heading-4 strong-500 text-normal">Use of personal information</h3>
+                <p class="mb-2">
+                    We may use or disclose the personal information we collect for one or more of the following purposes:
+                </p>
+                <ul>
+                    <li>
+                        <p class="mb-2">
+                            To fulfill or meet the reason you provided the information. For example, if you share your name and contact information to request a price quote or ask a question about our products or services, we will use that personal information to respond to your inquiry. If you provide your personal information to purchase a product or service, we will use that information to process your payment and facilitate delivery. We may also save your information to facilitate new product orders or process returns.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            To provide, support, personalize, and develop our website, products, and services.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            To create, maintain, customize, and secure your account with us.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            To process your requests, purchases, transactions, and payments and prevent transactional fraud.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            To provide you with support and to respond to your inquiries, including to investigate and address your concerns and monitor and improve our responses.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            To personalize your website experience and to deliver content and product and service offerings relevant to your interests, including targeted offers and ads through our website, third-party sites, and via email or text message (with your consent, where required by law).
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            To help maintain the safety, security, and integrity of our website, products and services, databases and other technology assets, and business.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            For testing, research, analysis, and product development, including to develop and improve our website, products, and services.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            To respond to law enforcement requests and as required by applicable law, court order, or governmental regulations.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            As described to you when collecting your personal information or as otherwise set forth in the CCPA.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            To evaluate or conduct a merger, divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all of our assets, whether as a going concern or as part of bankruptcy, liquidation, or similar proceeding, in which personal information held by us about our website users or consumers is among the assets transferred.
+                        </p>
+                    </li>
+                </ul>
+                <p class="mb-2">
+                    We will not collect additional categories of personal information or use the personal information we collected for materially different, unrelated, or incompatible purposes without providing you notice.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Sharing personal information</h3>
+                <p class="mb-2">
+                    We may share your personal information by disclosing it to a third party for a business purpose. We only make these business purpose disclosures under written contracts that describe the purposes, require the recipient to keep the personal information confidential, and prohibit using the disclosed information for any purpose except performing the contract. In the preceding 12 months, the Company has not disclosed personal information for a business purpose. We do not sell personal information.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Your rights and choices</h3>
+                <p class="mb-2">
+                    The CCPA provides consumers (California residents) with specific rights regarding their personal information. This section describes your CCPA rights and explains how to exercise those rights.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-italic">Right to know and data portability</h3>
+                <p class="mb-2">
+                    You have the right to request that we disclose certain information to you about our collection and use of your personal information over the past 12 months (the "right to know"). Once we receive your request and confirm your identity (see “exercising your rights to know or delete”), we will disclose to you:
+                </p>
+                <ul>
+                    <li>
+                        <p class="mb-2">
+                            The categories of personal information we collected about you.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            The categories of sources for the personal information we collected about you.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Our business or commercial purpose for collecting or selling that personal information.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            The categories of third parties with whom we share that personal information.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            If we sold or disclosed your personal information for a business purpose, two separate lists disclosing:
+                        </p>
+                        <ul>
+                            <li>
+                                <p class="mb-2">
+                                    sales, identifying the personal information categories that each category of recipient purchased; and 
+                                </p>
+                            </li>
+                            <li>
+                                <p class="mb-2">
+                                    disclosures for a business purpose, identifying the personal information categories that each category of recipient obtained.
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            The specific pieces of personal information we collected about you (also called a data portability request).
+                        </p>
+                    </li>
+                </ul>
+                <h3 class="heading heading-4 strong-500 text-italic">Right to delete</h3>
+                <p class="mb-2">
+                    You have the right to request that we delete any of your personal information that we collected from you and retained, subject to certain exceptions (the "right to delete"). Once we receive your request and confirm your identity (see “exercising your rights to know or delete”), we will review your request to see if an exception allowing us to retain the information applies. We may deny your deletion request if retaining the information is necessary for us or our service provider(s) to:
+                </p>
+                <ul>
+                    <li>
+                        <p class="mb-2">
+                            Complete the transaction for which we collected the personal information, provide a good or service that you requested, take actions reasonably anticipated within the context of our ongoing business relationship with you, fulfill the terms of a written warranty or product recall conducted in accordance with federal law, or otherwise perform our contract with you.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Detect security incidents, protect against malicious, deceptive, fraudulent, or illegal activity, or prosecute those responsible for such activities.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Debug products to identify and repair errors that impair existing intended functionality.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Exercise free speech, ensure the right of another consumer to exercise their free speech rights, or exercise another right provided for by law.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Comply with the California Electronic Communications Privacy Act (Cal. Penal Code § 1546 <em>et. seq.</em>).
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Engage in public or peer-reviewed scientific, historical, or statistical research in the public interest that adheres to all other applicable ethics and privacy laws, when the information's deletion may likely render impossible or seriously impair the research's achievement, if you previously provided informed consent.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Enable solely internal uses that are reasonably aligned with consumer expectations based on your relationship with us.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Comply with a legal obligation.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Make other internal and lawful uses of that information that are compatible with the context in which you provided it.
+                        </p>
+                    </li>
+                </ul>
+                <p class="mb-2">
+                    We will delete or deidentify personal information not subject to one of these exceptions from our records and will direct our service providers to take similar action.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-italic">Exercising your rights to know or delete</h3>
+                <p class="mb-2">
+                    To exercise your rights to know or delete described above, please submit a request by either:
+                </p>
+                <ul>
+                    <li>
+                        <p class="mb-2">
+                            emailing us at legal@roguehog.com; or
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            visiting https://roguehog.com.
+                        </p>
+                    </li>
+                </ul>
+                <p class="mb-2">
+                    Only you, or someone legally authorized to act on your behalf, may make a request to know or delete related to your personal information.
+                </p>
+                <p class="mb-2">
+                    You may also make a request to know or delete on behalf of your child by contacting us as provided above.
+                </p>
+                <p class="mb-2">
+                    You may only submit a request to know twice within a 12-month period. Your request to know or delete must:
+                </p>
+                <ul>
+                    <li>
+                        <p class="mb-2">
+                            Provide sufficient information that allows us to reasonably verify you are the person about whom we collected personal information or an authorized representative, which may include photo identity, a current bill bearing your name and address matching your photo identity.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Describe your request with sufficient detail that allows us to properly understand, evaluate, and respond to it.
+                        </p>
+                    </li>
+                </ul>
+                <p class="mb-2">
+                    We cannot respond to your request or provide you with personal information if we cannot verify your identity or authority to make the request and confirm the personal information relates to you.
+                </p>
+                <p class="mb-2">
+                    You do not need to create an account with us to submit a request to know or delete. However, we do consider requests made through your password protected account sufficiently verified when the request relates to personal information associated with that specific account.
+                </p>
+                <p class="mb-2">
+                    We will only use personal information provided in the request to verify the requestor's identity or authority to make it.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal"></h3>
+                <p class="mb-2">
+                    For instructions on exercising your sale opt-out or opt-in rights, see “personal information sales opt-out and opt-in rights.”
+                </p>
+                <h3 class="heading heading-4 strong-500 text-italic">Response timing and format</h3>
+                <p class="mb-2">
+                    We will confirm receipt of your request within 10 business days. If you do not receive confirmation within the 10-day timeframe, please contact legal@roguehog.com.
+                </p>
+                <p class="mb-2">
+                    We endeavor to substantively respond to a verifiable consumer request within 45 days of its receipt. If we require more time (up to another 45 days), we will inform you of the reason and extension period in writing.
+                </p>
+                <p class="mb-2">
+                    If you have an account with us, we will deliver our written response to that account. If you do not have an account with us, we will deliver our written response by mail or electronically, at your option.
+                </p>
+                <p class="mb-2">
+                    Any disclosures we provide will only cover the 12-month period preceding our receipt of your request. The response we provide will also explain the reasons we cannot comply with a request, if applicable. For data portability requests, we will select a format to provide your personal information that is readily useable and should allow you to transmit the information from one entity to another entity without hindrance.
+                </p>
+                <p class="mb-2">
+                    We do not charge a fee to process or respond to your verifiable consumer request unless it is excessive, repetitive, or manifestly unfounded. If we determine that the request warrants a fee, we will tell you why we made that decision and provide you with a cost estimate before completing your request.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-italic">Personal Information sales opt-out and opt-in rights</h3>
+                <p class="mb-2">
+                    If you are age 16 or older, you have the right to direct us to not sell your personal information at any time (the "right to opt-out"). We do not sell the personal information of consumers we actually know are less than 16 years old. Consumers who opt-in to personal information sales may opt-out of future sales at any time.
+                </p>
+                <p class="mb-2">
+                    To exercise the right to opt-out, you (or your authorized representative) may submit a request to us by emailing us at: <b>legal@roguehog.com</b>
+                </p>
+                <p class="mb-2">
+                    Once you make an opt-out request, we will wait at least 12 months before asking you to reauthorize personal information sales. However, you may change your mind and opt back in to personal information sales at any time by emailing us at: <b>legal@roguehog.com</b>
+                </p>
+                <p class="mb-2">
+                    You do not need to create an account with us to exercise your opt-out rights. We will only use personal information provided in an opt-out request to review and comply with the request.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Non-discrimination</h3>
+                <p class="mb-2">
+                    We will not discriminate against you for exercising any of your CCPA rights. Unless permitted by the CCPA, we will not:
+                </p>
+                <ul>
+                    <li>
+                        <p class="mb-2">
+                            Deny you goods or services.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Charge you different prices or rates for goods or services, including through granting discounts or other benefits, or imposing penalties.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Provide you a different level or quality of goods or services.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Suggest that you may receive a different price or rate for goods or services or a different level or quality of goods or services.
+                        </p>
+                    </li>
+                </ul>
+                <p class="mb-2">
+                    However, we may offer you certain financial incentives permitted by the CCPA that can result in different prices, rates, or quality levels. Any CCPA-permitted financial incentive we offer will reasonably relate to your personal information's value and contain written terms that describe the program's material aspects. Participation in a financial incentive program requires your prior opt-in consent, which you may revoke at any time.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Other California privacy rights</h3>
+                <p class="mb-2">
+                    California's "Shine the Light" law (Civil Code Section § 1798.83) permits users of our website that are California residents to request certain information regarding our disclosure of personal information to third parties for their direct marketing purposes. To make such a request, please send an email to legal@roguehog.com.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Changes to our Privacy Policy</h3>
+                <p class="mb-2">
+                    We reserve the right to amend this Privacy Policy at our discretion and at any time. When we make changes to this Privacy Policy, we will post the updated notice on the website and update the notice's effective date. <b>Your continued use of our website following the posting of changes constitutes your acceptance of such changes.</b>
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Contact information</h3>
+                <p class="mb-2">
+                    If you have any questions or comments about this notice, the ways in which we collect and use your information described here and in the Privacy Policy, your choices, and rights regarding such use, or wish to exercise your rights under California law, please do not hesitate to contact us at:
+                </p>
+                <ul>
+                    <li>
+                        <p class="mb-2">
+                           Email: legal@roguehog.com.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            Website: https://roguehog.com.
+                        </p>
+                    </li>
+                </ul>
+                <p class="mb-2">
+                    If you need to access this Privacy Policy in an alternative format due to having a disability, please contact legal@roguehog.com.
+                </p>
+            </div>
+        </div>
+    </div>
+</div><!-- /.privacy modal -->
+
+<!-- Terms Modal -->
+<div class="modal fade" id="termsModal" data-backdrop="static" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h3 class="section-title-inner heading-2 strong-500 text-normal">Terms of use<span style="color: #ef0000;">.</span></h3>
+                <a href="" class="close" data-dismiss="modal" aria-label="Close"><i class="fa-solid fa-rectangle-xmark" title="Close"></i></a>
+            </div>
+            <div class="modal-body">
+                <h3 class="heading heading-4 strong-500 text-normal">Roguehog LLC terms of use</h3>
+                <p class="mb-2">
+                    (Effective as of March 21, 2022)
+                </p>
+                <p class="mb-2">
+                    Welcome to the Terms of Use agreement of Roguehog LLC (the “Company”). For purposes of this agreement, “Site” refers to the Company’s website, which can be accessed at https://roguehog.com. “Service” or “Services” refers to the Company’s services accessed via the Site, in which users can upload, search, buy, download, and get paid for content. The terms “we,” “us,” and “our” refer to the Company. “You” refers to you, as a user of our Site or our Service.
+                </p>
+                <p class="mb-2">
+                    The following Terms of Use apply when you view or use the Service via our website located at https://roguehog.com.
+                </p>
+                <p class="mb-2">
+                    Please review the following terms carefully. By accessing or using the Service, you signify your agreement to these Terms of Use. <b>If you do not agree to be bound by these Terms of Use in their entirety, you may not access or use the Service.</b>
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Privacy policy</h3>
+                <p class="mb-2">
+                    The Company respects the privacy of our Service users. Please refer to the Company’s Privacy Policy (link found in the footer section of our website at https://roguehog.com) which explains how we collect, use, and disclose information that pertains to your privacy. When you access or use the Service, you signify your agreement to the Privacy Policy as well as these Terms of Use.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">About the Service</h3>
+                <p class="mb-2">
+                    The Service allows you to upload, search, buy, download, and get paid for content.  
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Registration; rules for user conduct and use of the service</h3>
+                <p class="mb-2">
+                    You need to be at least 16 years old and a resident of the United States to register for and use the Service. If you accept these Terms of Use, you represent that you have the capacity to be bound by it.
+                </p>
+                <p class="mb-2">
+                    If you are a user who signs up for the Service, you will create a personalized account (“Account”) which includes a unique email address and a password (collectively, the “User ID” to access the Service and to receive messages from the Company. You agree to provide true, accurate, current and complete information about yourself, and you may not misrepresent your profile information. Your right to access and use the Services is personal to you and is not transferable by you to any other person or entity. You agree not to disclose your password to any third party. You agree and understand that you are responsible for maintaining the confidentiality of any such information or passwords. Accordingly, you agree that you will be solely responsible to us for all activities that occur under your account.  You agree to notify us immediately of any unauthorized use of your password and/or account. The Company will not be responsible for any liabilities, losses, or damages arising out of the unauthorized use of your identity, password and/or account.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Payment and refund terms</h3>
+                <h3 class="heading heading-4 strong-500 text-italic">Definitions</h3>
+                <p class="mb-2">
+                    The following definitions govern and as used elsewhere in these Terms of Use:
+                </p>
+                <ul>
+                    <li>
+                        <p class="mb-2">
+                            “Bill Payment Cutoff Time” means 6:30 p.m. Eastern Standard Time on any Business Day and is the time by which you must transmit Payment Instructions for such Payment Instructions to be considered effective.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            “Business Day” means every day except Saturdays and Sundays and federal holidays.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            “Minimum Payment Amount” means the minimum payment required to be processed for each bill.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            “Payment Account” means your personal or business checking, savings, money market account, or credit card from which the Company bill payments for your Account(s) may be made by you. The Company recommends that you confirm with your banking institution or credit card institution any fees that you may be charged for bill payments from your Payment Account before designating a banking account or credit card as a Payment Account (e.g., your money market account may permit a limited number of transfers before fees are imposed).
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            “Payee” means the Company or its affiliates (if any) to which you direct a payment.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            “Payment Instructions” means the information provided by you for a bill payment to be made to Payee (i.e., credit card information, debit card information, bank account information, ABA number, payment date, payment amount, and any additional information).
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            “Payment Period” means the Business Day which your payment will be received by Payee and your Payment Account will be debited.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            “Pending Bill Payment” means a pending bill payment authorized by you that has not been debited to your Payment Account.
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            “Payment Processor” means the third-party payment processors integrated with the services offered by us to process your payments. 
+                        </p>
+                    </li>
+                </ul>
+                <h3 class="heading heading-4 strong-500 text-normal">Reliance by the Company</h3>
+                <p class="mb-2">
+                    You authorize the Company to rely on your User Identity to identify you when you use the Service, and as signature authorization for any payment made for the Service. You acknowledge and agree that you are responsible for all payments you make and for paying any and all late charges or penalties. You agree to any Minimum Payment Amount established by the Company and to pay each bill within the Payment Period. You also acknowledge and agree that if you permit another person or persons to use the Service or give them your User Identity, you are responsible for any payment that person makes to your Account, even if the person exceeds your authorization. You agree that The Company may comply with the Payment Instructions entered by any person using your User Identity.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Refund</h3>
+                <p class="mb-2">
+                    The Company will accept a refund request provided the following information is provided to us at refund@roguehog.com:
+                </p>
+                <ul>
+                    <li>
+                        <p class="mb-2">
+                            valid proof of purchase or payment;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            content purchased;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            reason for the request for refund; and
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            your contact name and email.
+                        </p>
+                    </li>
+                </ul>
+                <p class="mb-2">
+                    (Above a “Refund Request”)
+                </p>
+                <p class="mb-2">
+                    All Refund Requests submitted in accordance to the above requirements are reviewed and processed within approximately 10 business days of our receipt of your Refund Request. Each Refund Request is subject to the Company’s review in its sole discretion. If your Refund Request is approved by the Company, your refund will be credited back to the same payment method used to make the original purchase.
+                </p>
+                <p class="mb-2">
+                    Your permission to use the Site is conditioned upon the following use, posting and conduct restrictions, and you agree that you will not under any circumstances:
+                </p>
+                <ul>
+                    <li>
+                        <p class="mb-2">
+                            access the Service for any reason other than your personal or commercial use solely as permitted by the normal functionality of the Service;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            collect or harvest any personal data of any user of the Site or the Service;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            use the Site or the Service for the solicitation of business in the course of trade or in connection with a commercial enterprise;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            distribute any part or parts of the Site or the Service without our explicit written permission (we may grant the operators of public search engines permission to use spiders to copy materials from the site for the sole purpose of creating publicly available searchable indices but retain the right to revoke this permission at any time on a general or specific basis);
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            use the Service for any unlawful purpose or for the promotion of illegal activities;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            attempt to, or harass, abuse or harm another person or group;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            use another user’s account without permission;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            intentionally allow another user to access your account;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            provide false or inaccurate information when registering an account;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            interfere or attempt to interfere with the proper functioning of the Service;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            make any automated use of the Site, the Service or the related systems, or take any action that we deem to impose or to potentially impose an unreasonable or disproportionately large load on our servers or network infrastructure;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            bypass any robot exclusion headers or other measures we take to restrict access to the Service, or use any software, technology, or device to scrape, spider, or crawl the Service or harvest or manipulate data;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            circumvent, disable, or otherwise interfere with any security-related features of the Service or features that prevent or restrict use or copying of content, or enforce limitations on use of the Service or the content accessible via the Service; or
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            publish or link to malicious content of any sort, including that intended to damage or disrupt another user’s browser or computer.
+                        </p>
+                    </li>
+                </ul>
+                <h3 class="heading heading-4 strong-500 text-normal">Posting and conduct restrictions</h3>
+                <p class="mb-2">
+                    You may use the Services to voluntarily upload video footage and related data on vehicular traffic violation or accident (“User Content”) to the Site. You are solely responsible for the User Content that you upload or otherwise make available via the Site and the Service.
+                </p>
+                <p class="mb-2">
+                    You agree that we are only acting as a passive conduit for your online distribution and publication of your User Content. The Company, however, reserves the right to remove any User Content from the Service at its sole discretion.
+                </p>
+                <p class="mb-2">
+                    We grant you permission to use and access the Service, subject to the following express conditions surrounding User Content. You agree that failure to adhere to any of these conditions constitutes a material breach of these Terms of Use. 
+                </p>
+                <p class="mb-2">
+                    By transmitting and submitting any User Content while using the Service, you agree as follows:
+                </p>
+                <ul>
+                    <li>
+                        <p class="mb-2">
+                            you are solely responsible for your Account and the activity that occurs while signed in to or while using your Account;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            you will not post information that is malicious, libelous, false or inaccurate;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            you will not post any information that is abusive, threatening, obscene, defamatory, libelous, or racially, sexually, religiously, or otherwise objectionable and offensive;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            you retain all ownership rights in your User Content but you are required to grant the following rights to the Site and to users of the Service as set forth more fully under the “License Grant” and “Intellectual Property” provisions below:
+                        </p>
+                        <p class="mb-2">
+                            when you upload or post User Content to the Site or the Service, you grant to the Site a worldwide, non-exclusive, royalty-free, transferable license to use, sell, reproduce, distribute, prepare derivative works of, display, and perform that Content in connection with the provision of the Service; and you grant to each user of the Service, a worldwide, non-exclusive, royalty-free license to access your User Content through the Service, and to use, reproduce, distribute, prepare derivative works of, display and perform such Content to the extent permitted by the Service and under these Terms of Use;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            you will not submit content that is copyrighted or subject to third party proprietary rights, including privacy, publicity, trade secret, or others, unless you are the owner of such rights or have the appropriate permission from their rightful owner to specifically submit such content; and
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            you hereby agree that we have the right, in our sole discretion, to determine whether your User Content submissions are appropriate and comply with these Terms of Use, remove any and/or all of your submissions, and terminate your Account with or without prior notice and without liability to you or any third party.
+                        </p>
+                    </li>
+                </ul>
+                <h3 class="heading heading-4 strong-500 text-normal">Online content disclaimer</h3>
+                <p class="mb-2">
+                    Opinions, advice, statements, offers, or other information or content made available through the Service, but not directly by the Site, are those of their respective authors, and should not necessarily be relied upon. Such authors are solely responsible for such content. 
+                </p>
+                <p class="mb-2">
+                    We do not guarantee the accuracy, completeness, or usefulness of any information on the Site or the Service nor do we adopt nor endorse, nor are we responsible for, the accuracy or reliability of any opinion, advice, or statement made by other parties. We take no responsibility and assume no liability for any User Content that you or any other user or third-party uploads or sends via the Service. Under no circumstances will we be responsible for any loss or damage resulting from anyone’s reliance on information or other content uploaded to the Service or transmitted to users.
+                </p>
+                <p class="mb-2">
+                    Though we strive to enforce these Terms of Use, you may be exposed to User Content that is inaccurate or objectionable when you use or access the Site or the Service. We reserve the right, but have no obligation, to monitor the materials posted on the Site or the Service or to limit or deny a user’s access to the Service or take other appropriate action if a user violates these Terms of Use or engages in any activity that violates the rights of any person or entity or which we deem unlawful, offensive, abusive, harmful, or malicious. The Company shall have the right to remove any material that in its sole opinion violates, or is alleged to violate, the law or this agreement or which might be offensive, or that might violate the rights, harm, or threaten the safety of users or others. Unauthorized use may result in criminal and/or civil prosecution under Federal, State and local law. If you become aware of a misuse of our Service or violation of these Terms of Use, please contact us legal@roguehog.com.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Links to other sites and/or materials</h3>
+                <p class="mb-2">
+                    As part of the Service, we may provide you with convenient links to third party websites (“Third Party Sites”) as well as content or items belonging to or originating from third parties (the “Third Party Applications, Software or Content”). These links are provided as a courtesy to Service subscribers. We have no control over Third Party Sites or Third-Party Applications, Software or Content or the promotions, materials, information, goods, or services available on these Third-Party Sites or Third-Party Applications, Software or Content. Such Third Party Sites and Third Party Applications, Software or Content are not investigated, monitored or checked for accuracy, appropriateness, or completeness, and we are not responsible for any Third Party Sites accessed through the Site or any Third Party Applications, Software or Content posted on, available through or installed from the Site, including the content, accuracy, offensiveness, opinions, reliability, privacy practices or other policies of or contained in the Third Party Sites or the Third Party Applications, Software or Content. Inclusion of, linking to or permitting the use or installation of any Third-Party Site or any Third-Party Applications, Software or Content does not imply our approval or endorsement. If you decide to leave the Site and access the Third-Party Sites or to use or install any Third-Party Applications, Software or Content, you do so at your own risk and you should be aware that our terms and policies, including these Terms of Use, no longer govern. You should review the applicable terms and policies, including privacy and data gathering practices, of any Third-Party Site to which you navigate from the Site or relating to any applications you use or install from the Third-Party Site.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Copyright complaints and copyright agent</h3>
+                <h3 class="heading heading-4 strong-500 text-italic">Termination of repeat infringer accounts</h3>
+                <p class="mb-2">
+                    We respect the intellectual property rights of others and requires that the users do the same. Pursuant to 17 U.S.C. 512(i) of the United States Copyright Act, we have adopted and implemented a policy that provides for the termination in appropriate circumstances of users of the Service who are repeat infringers. We may terminate access for participants or users who are found repeatedly to provide or post protected third-party content without necessary rights and permissions.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-italic">DMCA take-down notices</h3>
+                <p class="mb-2">
+                    If you are a copyright owner or an agent thereof and believe, in good faith, that any materials provided on the Service infringe upon your copyrights, you may submit a notification pursuant to the Digital Millennium Copyright Act (see 17 U.S.C 512) (“DMCA”) by sending the following information in writing to  us at legal@roguehog.com:
+                </p>
+                <ul>
+                    <li>
+                        <p class="mb-2">
+                            the date of your notification;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            a physical or electronic signature of a person authorized to act on behalf of the owner of an exclusive right that is allegedly infringed;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            a description of the copyrighted work claimed to have been infringed, or, if multiple copyrighted works at a single online site are covered by a single notification, a representative list of such works at that site;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            a description of the material that is claimed to be infringing or to be the subject of infringing activity and information sufficient to enable us to locate such work;
+                        </p>
+                    </li>
+                        <p class="mb-2">
+                            information reasonably sufficient to permit the service provider to contact you, such as an address, telephone number, and/or email address;
+                        </p>
+                    </li>
+                        <p class="mb-2">
+                            a statement that you have a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law; and
+                        </p>
+                    </li>
+                        <p class="mb-2">
+                            a statement that the information in the notification is accurate, and under penalty of perjury, that you are authorized to act on behalf of the owner of an exclusive right that is allegedly infringed.
+                        </p>
+                    </li>
+                </ul>
+                <h3 class="heading heading-4 strong-500 text-italic">Counter-notices</h3>
+                <p class="mb-2">
+                    If you believe that your User Content that has been removed from the Site is not infringing, or that you have the authorization from the copyright owner, the copyright owner's agent, or pursuant to the law, to post and use the content in your User Content, you may send a counter-notice containing the following information using the contact information set forth above:
+                </p>
+                <ul>
+                    <li>
+                        <p class="mb-2">
+                            your physical or electronic signature;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            a description of the content that has been removed and the location at which the content appeared before it was removed;
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                            a statement that you have a good faith belief that the content was removed as a result of mistake or a misidentification of the content; and
+                        </p>
+                    </li>
+                    <li>
+                        <p class="mb-2">
+                           your name, address, telephone number, and email address, a statement that you consent to the jurisdiction of the federal court in Delaware and a statement that you will accept service of process from the person who provided notification of the alleged infringement.
+                        </p>
+                    </li>
+                </ul>
+                <p class="mb-2">
+                    If a counter-notice is received by us, we may send a copy of the counter-notice to the original complaining party informing such person that it may reinstate the removed content in 10 business days. Unless the copyright owner files an action seeking a court order against the content provider, member or user, the removed content may (in our sole discretion) be reinstated on the Site in 10 to 14 business days or more after receipt of the counter-notice.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">License grant</h3>
+                <p class="mb-2">
+                    By posting any User Content via the Service, you expressly grant, and you represent and warrant that you have a right to grant, to the Company a royalty-free, sublicensable, transferable, perpetual, irrevocable, non-exclusive, worldwide license to use, reproduce, modify, publish, list information regarding, edit, translate, distribute, publicly perform, publicly display, and make derivative works of all such User Content and your name, voice, and/or likeness as contained in your User Content, if applicable, in whole or in part, and in any form, media or technology, whether now known or hereafter developed, for use in connection with the Service.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Intellectual property</h3>
+                <p class="mb-2">
+                    You acknowledge and agree that we and our licensors retain all right, title, interest and ownership in and to all intellectual property rights of any kind related to the Service, including applicable copyrights, trademarks, templates provided via the Site and other proprietary rights, including, without limitations, the “look and feel” of the Site (e.g., text, graphics, images, logos, buttons, icons and the placement and layout thereof), images, video, audio, data, content software and other media, material or information, other than User Content. Other product and company names that are mentioned on the Service may be trademarks of their respective owners. We reserve all rights that are not expressly granted to you under these Terms of Use. Subject to the terms and conditions of these Terms of Use, we grant to you, while you have an Account for the Services, a non-transferable, non-sublicensable, non-exclusive, revocable, limited-purpose right to access and use the Services.
+                </p>
+                <p class="mb-2">
+                    You acknowledge that any ideas, suggestions, concepts, processes or techniques which you provide to us related to the Services, the Site, use or our business (“Feedback”) shall become our property without any compensation or other consideration payable to you by use, and you do so of your own free will and volition. We may or may not, in our sole discretion, use or incorporate the Feedback in whatever form or derivative we may decide. You hereby assign all rights on a worldwide basis in perpetuity to use in any Feedback and, as applicable, waive any moral rights. 
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Email may not be used to provide notice</h3>
+                <p class="mb-2">
+                    Communications made through the Service’s email and messaging system will not constitute legal notice to the Site, the Service, or any of its officers, employees, agents, or representatives in any situation where legal notice is required by contract or any law or regulation.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">User consent to receive communications in electronic form</h3>
+                <p class="mb-2">
+                    For contractual purposes, you: (a) consent to receive communications from us in an electronic form via the email address you have submitted; and (b) agree that all Terms of Use, agreements, notices, disclosures, and other communications that we provide to you electronically satisfy any legal requirement that such communications would satisfy if it were in writing. The foregoing does not affect your non-waivable rights.
+                </p>
+                <p class="mb-2">
+                    We may also use your email address to send you other messages, including information about the Site or the Service and special offers. You may opt out of such email by changing your account settings, using the “Unsubscribe” link in the message, or by sending an email to legal@roguehog.com.
+                </p>
+                <p class="mb-2">
+                    Opting out may prevent you from receiving messages regarding the Site, the Service or special offers.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Warranty disclaimer</h3>
+                <p class="mb-2">
+                    YOUR USE OF THE SITE AND ALL CONTENT FORMING PART OF OR RELATED TO THE SITE, INCLUDING ANY CONTENT YOU UPLOAD OR SUBMIT AND ANY THIRD-PARTY SOFTWARE AND CONTENT, ARE AT YOUR SOLE RESPONSIBILITY AND RISK. THE SITE AND THE SERVICE ARE PROVIDED “AS IS,” WITHOUT WARRANTY OF ANY KIND. WITHOUT LIMITING THE FOREGOING, WE EXPRESSLY DISCLAIM ALL WARRANTIES, WHETHER EXPRESS, IMPLIED OR STATUTORY, REGARDING THE SITE OR THE SERVICE INCLUDING WITHOUT LIMITATION ANY WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, SECURITY, COMPLETENESS, PERFORMANCE, ACCURACY. TITLE AND NON-INFRINGEMENT. WITHOUT LIMITING THE FOREGOING, WE MAKE NO WARRANTY OR REPRESENTATION THAT ACCESS TO OR OPERATION OF THE SITE OR THE SERVICE WILL BE UNINTERRUPTED OR ERROR FREE. YOU ASSUME FULL RESPONSIBILITY AND RISK OF LOSS RESULTING FROM YOUR DOWNLOADING AND/OR USE OF FILES, INFORMATION, CONTENT OR OTHER MATERIAL OBTAINED FROM THE SERVICE. SOME JURISDICTIONS LIMIT OR DO NOT PERMIT DISCLAIMERS OF WARRANTY, SO THIS PROVISION MAY NOT APPLY TO YOU.
+                </p>
+                <p class="mb-2">
+                    WE ARE NOT RESPONSIBLE FOR THE ACTS OR OMISSIONS OF, OR FOR THE FAILINGS OF, ANY THIRD-PARTY PROVIDER OF ANY CONTENT, SERVICE, NETWORK SOFTWARE OR HARDWARE, INCLUDING, BUT NOT LIMITED TO, INTERNET SERVICE PROVIDERS, HOSTING SERVICES UTILIZED BY US, TELECOMMUNICAITONS PROVIDERS, CONTENT PROVIDED BY OTHER USERS OR ANY SOFTWARE OR HARDWARE NOT PROVIDED BY US. 
+                </p>
+                <p class="mb-2">
+                    YOU ARE SOLELY RESPONSIBLE FOR ENSURING THAT YOUR CONTENT IS COMPATIBLE WITH THE SITE. WE DISCLAIM ANY LIABILITY OR RESPONSIBILITY FOR ANY UNAUTHORIZED USE OF YOUR CONTENT BY THIRD PARTIES OR OTHER USERS OF THE SITE AND ARE NOT RESPONSIBLE FOR PROTECTING YOUR CONTENT.
+                </p>
+                <p class="mb-2">
+                    LIMITATION OF DAMAGES/EXCLUSION OF CONSEQUENTIAL AND RELATED DAMAGES THE LIMITATIONS AND RELEASE SET FORTH IN THIS SECTION APPLY TO THE EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL WE, THE SITE, THE SERVICE, ITS AFFILIATES, DIRECTORS, OR EMPLOYEES, OR ITS LICENSORS OR PARTNERS, BE LIABLE TO YOU FOR ANY LOSS OF PROFITS, USE, OR DATA, OR FOR ANY INCIDENTAL, INDIRECT, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES, HOWEVER ARISING, THAT RESULT FROM: (A) THE USE, DISCLOSURE, OR DISPLAY OF YOUR USER CONTENT; (B) YOUR USE OR INABILITY TO USE THE SERVICE; (C) THE SERVICE GENERALLY OR THE SOFTWARE OR SYSTEMS THAT MAKE THE SERVICE AVAILABLE; OR (D) ANY OTHER INTERACTIONS WITH USE OR WITH ANY OTHER USER OF THE SERVICE, WHETHER BASED ON WARRANTY, CONTRACT, TORT (INCLUDING NEGLIGENCE) OR ANY OTHER LEGAL THEORY, AND WHETHER OR NOT WE HAVE BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGE, AND EVEN IF A REMEDY SET FORTH HEREIN IS FOUND TO HAVE FAILED OF ITS ESSENTIAL PURPOSE.
+                </p>
+                <p class="mb-2">
+                    NEITHER PARTY’S LIABILITY WITH RESPECT TO ANY SINGLE INCIDENT ARISING OUT OF OR RELATED TO THIS AGREEMENT WILL EXCEED THE AMOUNT PAID BY YOU HEREUNDER IN THE 12 MONTHS PRECEDING THE INCIDENT; PROVIDED THAT, IN NO EVENT WILL EITHER PARTY’S AGGREGATE LIABILITY ARISING OUT OF OR RELATED TO THESE TERMS OF SERVICE EXCEED THE TOTAL AMOUNT PAID BY YOU HEREUNDER. THIS LIMITATION WILL NOT LIMIT YOUR PAYMENT OBLIGATIONS TO US.
+                </p>
+                <p class="mb-2">
+                    SOME JURISDICTIONS LIMIT OR DO NOT PERMIT DISCLAIMERS OF LIABILITY, SO THE ABOVE PROVISION MAY NOT APPLY TO YOU.
+                </p>
+                <p class="mb-2">
+                    If you have a dispute with one or more users, you release us (and our directors, officers, employees, agents, subsidiaries and joint ventures) from claims, demands and damages (actual and consequential) of every kind and nature, known and unknown, arising out of or in any way connected with such disputes. 
+                </p>
+                <p class="mb-2">
+                    IF YOU ARE A CALIFORNIA RESIDENT USING THE SERVICE, YOU MAY SPECIFICALLY WAIVE CALIFORNIA CIVIL CODE §1542, WHICH READS: “A GENERAL RELEASE DOES NOT EXTEND TO CLAIMS WHICH THE CREDITOR DOES NOT KNOW OR SUSPECT TO EXIST IN HIS FAVOR AT THE TIME OF EXECUTING THE RELEASE, WHICH IF KNOWN BY HIM MUST HAVE MATERIALLY AFFECTED HIS SETTLEMENT WITH THE DEBTOR.”
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Termination</h3>
+                <p class="mb-2">
+                    We reserve the right in our sole discretion to modify, suspend or discontinue the Site and/or the Services, or any portion thereof, with or without notice to you at any time and for any reason, including, but not limited to, a failure to comply with the terms of these Terms of Us. We shall have no liability whatsoever for any damages, liabilities, losses or any other consequences that you may incur as a result of any such modification, suspension or discontinuance.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Indemnity</h3>
+                <p class="mb-2">
+                    You agree to indemnify, defend, and hold harmless the Company, and its subsidiaries, affiliates, co-branders, all third-party advertisers, technology providers, service providers or other partners, and each of their respective shareholders, directors, officers, employees, agents and representatives, from and against any third party claim, demand, loss, damage, cost, or liability (including, reasonable attorneys’ fees) arising out of or relating to these Terms of Use or the Site, including but not limited to in relation to: (a) your use, non-use or misuse of, or connection to the Site, the Services and any User Content; (b) your breach or alleged breach of these Terms of Use; and (c) your violation of any rights, including intellectual property rights, of a third party. We reserve the right, at your expense, to assume the exclusive defense and control of any matter for which you are required to indemnify us and you agree to cooperate with our defense of these claims. You agree not to settle any matter without our prior written consent. We will use reasonable efforts to notify you of any such claim, action or proceeding upon becoming aware of it.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Modification of Terms of Use</h3>
+                <p class="mb-2">
+                    We can amend these Terms of Use at any time and will update these Terms of Use in the event of any such amendments. It is your sole responsibility to check the Site from time to time to view any such changes in this agreement. Your continued use of the Site or the Service signifies your agreement to our revisions to these Terms of Use. We will endeavor to notify you of material changes to these Terms of Use by posting a notice on our homepage and/or sending an email to the email address you provided to us upon registration. For this additional reason, you should keep your contact and profile information current. Any changes to these Terms of Use (other than as set forth in this paragraph) or waiver of our rights hereunder shall not be valid or effective except in a written agreement bearing the physical signature of one of our officers. No purported waiver or modification of this agreement on our part via telephonic or email communications shall be valid.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">General terms</h3>
+                <p class="mb-2">
+                    If any part of this Terms of Use agreement is held or found to be invalid or unenforceable, that portion of the agreement will be construed as to be consistent with applicable law while the remaining portions of the agreement will remain in full force and effect. Any failure on our part to enforce any provision of this agreement will not be considered a waiver of our right to enforce such provision. Our rights under this agreement survive any transfer or termination of this agreement.
+                </p>
+                <p class="mb-2">
+                    You agree that any cause of action related to or arising out of your relationship with the Company must commence within ONE year after the cause of action accrues. Otherwise, such cause of action is permanently barred.
+                </p>
+                <p class="mb-2">
+                    These Terms of Use and your use of the Site are governed by the federal laws of the United States of America and the laws of the State of Delaware, without regard to conflict of law provisions.
+                </p>
+                <p class="mb-2">
+                    We may assign or delegate these Terms of Service and/or our Privacy Policy, in whole or in part, to any person or entity at any time with or without your consent. You may not assign or delegate any rights or obligations under the Terms of Use or Privacy Policy without our prior written consent, and any unauthorized assignment or delegation by you is void.
+                </p>
+                <p class="mb-2">
+                    YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS OF USE, UNDERSTAND THE TERMS OF USE, AND WILL BE BOUND BY THESE TERMS AND CONDITIONS. YOU FURTHER ACKNOWLEDGE THAT THESE TERMS OF USE TOGETHER WITH THE PRIVACY POLICY (LINK FOUND IN THE FOOTER SECTION OF OUR WEBSITE AT HTTPS://ROGUEHOG.COM) REPRESENT THE COMPLETE AND EXCLUSIVE STATEMENT OF THE AGREEMENT BETWEEN US AND THAT IT SUPERSEDES ANY PROPOSAL OR PRIOR AGREEMENT ORAL OR WRITTEN, AND ANY OTHER COMMUNICATIONS BETWEEN US RELATING TO THE SUBJECT MATTER OF THIS AGREEMENT.
+                </p>
+                <h3 class="heading heading-4 strong-500 text-normal">Contact us</h3>
+                <p class="mb-2">
+                    If you have any questions regarding these Terms of Use or the practices of this Site, please contact us by sending an email to legal@roguehog.com.
+                </p>
+                <p class="mb-2">
+                    These Terms of Use were last updated on March 21, 2022.
+                </p>
+            </div>
+        </div>
+    </div>
+</div><!-- /.terms modal -->
